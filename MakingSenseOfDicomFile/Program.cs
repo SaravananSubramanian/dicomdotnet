@@ -16,10 +16,11 @@ namespace MakingSenseOfDicomFile
                 LogToDebugConsole($"Attempting to extract information from DICOM file:{PathToDicomTestFile}...");
 
                 var file = DicomFile.Open(PathToDicomTestFile,readOption:FileReadOption.ReadAll);
-                var studyInstanceUid = file.Dataset.GetSingleValue<string>(DicomTag.StudyInstanceUID);
-                var seriesInstanceUid = file.Dataset.GetSingleValue<string>(DicomTag.SeriesInstanceUID);
-                var sopClassUid = file.Dataset.GetSingleValue<string>(DicomTag.SOPClassUID);
-                var sopInstanceUid = file.Dataset.GetSingleValue<string>(DicomTag.SOPInstanceUID);
+                var dicomDataset = file.Dataset;
+                var studyInstanceUid = dicomDataset.GetSingleValue<string>(DicomTag.StudyInstanceUID);
+                var seriesInstanceUid = dicomDataset.GetSingleValue<string>(DicomTag.SeriesInstanceUID);
+                var sopClassUid = dicomDataset.GetSingleValue<string>(DicomTag.SOPClassUID);
+                var sopInstanceUid = dicomDataset.GetSingleValue<string>(DicomTag.SOPInstanceUID);
                 var transferSyntaxUid = file.FileMetaInfo.TransferSyntax;
 
                 LogToDebugConsole($" StudyInstanceUid - {studyInstanceUid}");
