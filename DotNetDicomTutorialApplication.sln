@@ -1,0 +1,168 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakingSenseOfDicomFile", "MakingSenseOfDicomFile\MakingSenseOfDicomFile.csproj", "{A57C87E9-39CF-4C2B-9EA0-CDDC60F9A8E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatingDicomFile", "CreatingDicomFile\CreatingDicomFile.csproj", "{7201CE89-77B4-4AF1-B590-602A339F9CC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractingImageData", "ExtractingImageData\ExtractingImageData.csproj", "{B4629C0C-2674-4F5B-8097-0B46689851D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewingDicomImages", "ViewingDicomImages\ViewingDicomImages.csproj", "{B4E37BB9-C4AD-46D7-90D4-AB07714B7340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomDirectory", "UnderstandingDicomDirectory\UnderstandingDicomDirectory.csproj", "{1C427E01-E042-41BA-9EB1-ACD1D0CE9E66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomVerification", "UnderstandingDicomVerification\UnderstandingDicomVerification.csproj", "{6B3A2A8C-D24C-4CEB-8DD5-5E6AA7FCC4E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomAssociationNegotiations", "UnderstandingDicomAssociationNegotiations\UnderstandingDicomAssociationNegotiations.csproj", "{B0D8E6EA-FB80-4C02-A8F9-FD935B9E3490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandlingTransientErrorsDuringCommunication", "HandlingTransientErrorsDuringCommunication\HandlingTransientErrorsDuringCommunication.csproj", "{EE12D415-92E7-4453-A1CC-A2F6947963C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomQueryRetreiveOperationsPart1", "DicomQueryRetreiveOperationsPart1\DicomQueryRetreiveOperationsPart1.csproj", "{5A88B114-8B78-437D-82B1-6999AF030B42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomQueryRetreiveOperationsPart2", "DicomQueryRetreiveOperationsPart2\DicomQueryRetreiveOperationsPart2.csproj", "{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomStorageCommitmentService", "DicomStorageCommitmentService\DicomStorageCommitmentService.csproj", "{FD368589-D2EA-45FB-9C5C-764A64D6C444}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomWorklistsAndMpps", "UnderstandingDicomWorklistsAndMpps\UnderstandingDicomWorklistsAndMpps.csproj", "{C37CD4BE-B92C-4F44-8C6E-B1D0C4E2A205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomStructuredReports", "UnderstandingDicomStructuredReports\UnderstandingDicomStructuredReports.csproj", "{62034CFD-D0CE-4295-AE56-49BDE354A9B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomPrintOperations", "UnderstandingDicomPrintOperations\UnderstandingDicomPrintOperations.csproj", "{F4DD5D65-ACEC-4BD9-B13D-940FFEA64D21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomWado", "UnderstandingDicomWado\UnderstandingDicomWado.csproj", "{279C5023-082D-478A-9CF4-38DD9985AD59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomWeb", "UnderstandingDicomWeb\UnderstandingDicomWeb.csproj", "{62065C26-191E-4AAF-8844-43A9D96F4E04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Making Sense of DICOM File Tutorial", "Making Sense of DICOM File Tutorial", "{90464106-AE63-41C7-9E7B-40C27A3AFD49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Creating DICOM File Tutorial", "Creating DICOM File Tutorial", "{692427DB-1BF7-483C-B829-6E2B5AC89F9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Query Retreive Tutorial", "DICOM Query Retreive Tutorial", "{7C0CA0A0-D7E5-45A8-ADE1-3054C77ABC4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Storage Commitment Tutorial", "DICOM Storage Commitment Tutorial", "{2A7714F8-6B3E-49BF-902D-428054770535}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extract DICOM Image Data Tutorial", "Extract DICOM Image Data Tutorial", "{76D624FF-3520-463E-AB80-6178435C4513}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakingSenseOfDicomFilePart2", "MakingSenseOfDicomFilePart2\MakingSenseOfDicomFilePart2.csproj", "{D76D74DC-591F-47B1-838A-114AA4434C50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Handling Transient Errors in DICOM Tutorial", "Handling Transient Errors in DICOM Tutorial", "{ED6CD88B-35F7-4878-A176-A123153A9E7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Understanding DICOM Print Tutorial", "Understanding DICOM Print Tutorial", "{5CFC3823-DD1A-4B45-B15B-40BF7D76F018}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Viewing DICOM Files Tutorial", "Viewing DICOM Files Tutorial", "{ED7A55F8-9B68-4FE5-ADF3-CB7EC25F294D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Understanding DICOM Directory", "Understanding DICOM Directory", "{7281252C-DACB-433A-877A-8B5BA49F3C4D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Understanding DICOM Web and Wado", "Understanding DICOM Web and Wado", "{D97AE867-305C-4354-97A3-FF6D2732E3C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Understanding DICOM Structured Reports Tutorial", "Understanding DICOM Structured Reports Tutorial", "{F7213711-399B-4AA2-A54A-EF85A5719B41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Understanding DICOM Verification", "Understanding DICOM Verification", "{D7EF2FB2-5793-4B5B-B965-959995893031}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Worklist and MPPS Tutorial", "DICOM Worklist and MPPS Tutorial", "{F6BFB2C4-AA0F-4827-B4B4-3518CE9C7204}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Association and Negotiations Tutorial", "DICOM Association and Negotiations Tutorial", "{2DB4C31B-0494-44ED-AB41-458DB1F2AF50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A57C87E9-39CF-4C2B-9EA0-CDDC60F9A8E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57C87E9-39CF-4C2B-9EA0-CDDC60F9A8E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57C87E9-39CF-4C2B-9EA0-CDDC60F9A8E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57C87E9-39CF-4C2B-9EA0-CDDC60F9A8E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7201CE89-77B4-4AF1-B590-602A339F9CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7201CE89-77B4-4AF1-B590-602A339F9CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7201CE89-77B4-4AF1-B590-602A339F9CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7201CE89-77B4-4AF1-B590-602A339F9CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4629C0C-2674-4F5B-8097-0B46689851D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4629C0C-2674-4F5B-8097-0B46689851D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4629C0C-2674-4F5B-8097-0B46689851D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4629C0C-2674-4F5B-8097-0B46689851D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4E37BB9-C4AD-46D7-90D4-AB07714B7340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E37BB9-C4AD-46D7-90D4-AB07714B7340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E37BB9-C4AD-46D7-90D4-AB07714B7340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E37BB9-C4AD-46D7-90D4-AB07714B7340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C427E01-E042-41BA-9EB1-ACD1D0CE9E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C427E01-E042-41BA-9EB1-ACD1D0CE9E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C427E01-E042-41BA-9EB1-ACD1D0CE9E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C427E01-E042-41BA-9EB1-ACD1D0CE9E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B3A2A8C-D24C-4CEB-8DD5-5E6AA7FCC4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3A2A8C-D24C-4CEB-8DD5-5E6AA7FCC4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3A2A8C-D24C-4CEB-8DD5-5E6AA7FCC4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3A2A8C-D24C-4CEB-8DD5-5E6AA7FCC4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0D8E6EA-FB80-4C02-A8F9-FD935B9E3490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0D8E6EA-FB80-4C02-A8F9-FD935B9E3490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0D8E6EA-FB80-4C02-A8F9-FD935B9E3490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0D8E6EA-FB80-4C02-A8F9-FD935B9E3490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE12D415-92E7-4453-A1CC-A2F6947963C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE12D415-92E7-4453-A1CC-A2F6947963C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE12D415-92E7-4453-A1CC-A2F6947963C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE12D415-92E7-4453-A1CC-A2F6947963C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A88B114-8B78-437D-82B1-6999AF030B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A88B114-8B78-437D-82B1-6999AF030B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A88B114-8B78-437D-82B1-6999AF030B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A88B114-8B78-437D-82B1-6999AF030B42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD368589-D2EA-45FB-9C5C-764A64D6C444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD368589-D2EA-45FB-9C5C-764A64D6C444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD368589-D2EA-45FB-9C5C-764A64D6C444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD368589-D2EA-45FB-9C5C-764A64D6C444}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C37CD4BE-B92C-4F44-8C6E-B1D0C4E2A205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C37CD4BE-B92C-4F44-8C6E-B1D0C4E2A205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C37CD4BE-B92C-4F44-8C6E-B1D0C4E2A205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C37CD4BE-B92C-4F44-8C6E-B1D0C4E2A205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62034CFD-D0CE-4295-AE56-49BDE354A9B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62034CFD-D0CE-4295-AE56-49BDE354A9B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62034CFD-D0CE-4295-AE56-49BDE354A9B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62034CFD-D0CE-4295-AE56-49BDE354A9B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4DD5D65-ACEC-4BD9-B13D-940FFEA64D21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4DD5D65-ACEC-4BD9-B13D-940FFEA64D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4DD5D65-ACEC-4BD9-B13D-940FFEA64D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4DD5D65-ACEC-4BD9-B13D-940FFEA64D21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{279C5023-082D-478A-9CF4-38DD9985AD59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279C5023-082D-478A-9CF4-38DD9985AD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279C5023-082D-478A-9CF4-38DD9985AD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279C5023-082D-478A-9CF4-38DD9985AD59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62065C26-191E-4AAF-8844-43A9D96F4E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62065C26-191E-4AAF-8844-43A9D96F4E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62065C26-191E-4AAF-8844-43A9D96F4E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62065C26-191E-4AAF-8844-43A9D96F4E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76D74DC-591F-47B1-838A-114AA4434C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76D74DC-591F-47B1-838A-114AA4434C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76D74DC-591F-47B1-838A-114AA4434C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76D74DC-591F-47B1-838A-114AA4434C50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A57C87E9-39CF-4C2B-9EA0-CDDC60F9A8E7} = {90464106-AE63-41C7-9E7B-40C27A3AFD49}
+		{7201CE89-77B4-4AF1-B590-602A339F9CC0} = {692427DB-1BF7-483C-B829-6E2B5AC89F9F}
+		{B4629C0C-2674-4F5B-8097-0B46689851D9} = {76D624FF-3520-463E-AB80-6178435C4513}
+		{B4E37BB9-C4AD-46D7-90D4-AB07714B7340} = {ED7A55F8-9B68-4FE5-ADF3-CB7EC25F294D}
+		{1C427E01-E042-41BA-9EB1-ACD1D0CE9E66} = {7281252C-DACB-433A-877A-8B5BA49F3C4D}
+		{6B3A2A8C-D24C-4CEB-8DD5-5E6AA7FCC4E8} = {D7EF2FB2-5793-4B5B-B965-959995893031}
+		{B0D8E6EA-FB80-4C02-A8F9-FD935B9E3490} = {2DB4C31B-0494-44ED-AB41-458DB1F2AF50}
+		{EE12D415-92E7-4453-A1CC-A2F6947963C8} = {ED6CD88B-35F7-4878-A176-A123153A9E7E}
+		{5A88B114-8B78-437D-82B1-6999AF030B42} = {7C0CA0A0-D7E5-45A8-ADE1-3054C77ABC4F}
+		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D} = {7C0CA0A0-D7E5-45A8-ADE1-3054C77ABC4F}
+		{FD368589-D2EA-45FB-9C5C-764A64D6C444} = {2A7714F8-6B3E-49BF-902D-428054770535}
+		{C37CD4BE-B92C-4F44-8C6E-B1D0C4E2A205} = {F6BFB2C4-AA0F-4827-B4B4-3518CE9C7204}
+		{62034CFD-D0CE-4295-AE56-49BDE354A9B8} = {F7213711-399B-4AA2-A54A-EF85A5719B41}
+		{F4DD5D65-ACEC-4BD9-B13D-940FFEA64D21} = {5CFC3823-DD1A-4B45-B15B-40BF7D76F018}
+		{279C5023-082D-478A-9CF4-38DD9985AD59} = {D97AE867-305C-4354-97A3-FF6D2732E3C0}
+		{62065C26-191E-4AAF-8844-43A9D96F4E04} = {D97AE867-305C-4354-97A3-FF6D2732E3C0}
+		{D76D74DC-591F-47B1-838A-114AA4434C50} = {90464106-AE63-41C7-9E7B-40C27A3AFD49}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5310E4A-7F34-42DC-9F79-6A159E4152DB}
+	EndGlobalSection
+EndGlobal
