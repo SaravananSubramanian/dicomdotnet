@@ -45,13 +45,11 @@ namespace UnderstandingDicomVerification
 
         private static void ClientOnAssociationRejected(object sender, AssociationRejectedEventArgs e)
         {
-            var associationRejectedEvent = e;
             LogToDebugConsole($"Association was rejected. Rejected Reason:{e.Reason}");
         }
 
         private static void ClientOnAssociationAccepted(object sender, AssociationAcceptedEventArgs e)
         {
-            var associationRejectedEvent = e;
             var association = e.Association;
             LogToDebugConsole($"Association was accepted by remote host: {association.RemoteHost} running on port: {association.RemotePort}");
         }
