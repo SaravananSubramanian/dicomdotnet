@@ -10,11 +10,14 @@ namespace UnderstandingDicomVerification
             try
             {
                 var client = new DicomClient();
-                
-                //register that we want to do a DICOM ping here
-                client.AddRequest(new DicomCEchoRequest());
 
-                //add event handlers for association connectivity information
+                //register that we want to do a DICOM ping here
+                var dicomCEchoRequest = new DicomCEchoRequest();
+                //attach an event handler when remote peer responds to echo request 
+                dicomCEchoRequest.OnResponseReceived += OnEchoResponseReceivedFromRemoteHost;
+                client.AddRequest(dicomCEchoRequest);
+
+                //add event handlers for overall association connectivity information
                 client.AssociationAccepted += ClientOnAssociationAccepted;
                 client.AssociationRejected += ClientOnAssociationRejected;
                 client.AssociationReleased += ClientOnAssociationReleased;
@@ -36,6 +39,13 @@ namespace UnderstandingDicomVerification
             {
                 LogToDebugConsole($"Error occured during DICOM verification request -> {e.StackTrace}");
             }
+        }
+
+        private static void OnEchoResponseReceivedFromRemoteHost(DicomCEchoRequest request, DicomCEchoResponse response)
+        {
+            LogToDebugConsole($"    DICOM verification request was received by remote host");
+            LogToDebugConsole($"    DICOM response received from remote host:");
+            LogToDebugConsole($"    Verification response status returned was:{response.Status.ToString()}");
         }
 
         private static void ClientOnAssociationReleased(object sender, EventArgs e)
