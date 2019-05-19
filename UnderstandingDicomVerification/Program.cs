@@ -42,34 +42,14 @@ namespace UnderstandingDicomVerification
             dicomCEchoRequest.OnResponseReceived += OnEchoResponseReceivedFromRemoteHost;
             client.AddRequest(dicomCEchoRequest);
 
-            //add event handlers for overall association connectivity information
-            client.AssociationAccepted += ClientOnAssociationAccepted;
-            client.AssociationRejected += ClientOnAssociationRejected;
-            client.AssociationReleased += ClientOnAssociationReleased;
             return client;
         }
 
         private static void OnEchoResponseReceivedFromRemoteHost(DicomCEchoRequest request, DicomCEchoResponse response)
         {
-            LogToDebugConsole($"\t DICOM Echo Verification request was received by remote host");
-            LogToDebugConsole($"\t Response was received from remote host...");
-            LogToDebugConsole($"\t Verification response status returned was:{response.Status.ToString()}");
-        }
-
-        private static void ClientOnAssociationReleased(object sender, EventArgs e)
-        {
-            LogToDebugConsole("Association was released");
-        }
-
-        private static void ClientOnAssociationRejected(object sender, AssociationRejectedEventArgs e)
-        {
-            LogToDebugConsole($"Association was rejected. Rejected Reason:{e.Reason}");
-        }
-
-        private static void ClientOnAssociationAccepted(object sender, AssociationAcceptedEventArgs e)
-        {
-            var association = e.Association;
-            LogToDebugConsole($"Association was accepted by remote host: {association.RemoteHost} running on port: {association.RemotePort}");
+            LogToDebugConsole($"DICOM Echo Verification request was received by remote host");
+            LogToDebugConsole($"Response was received from remote host...");
+            LogToDebugConsole($"Verification response status returned was:{response.Status.ToString()}");
         }
 
         private static void LogToDebugConsole(string informationToLog)
