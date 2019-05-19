@@ -65,6 +65,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Worklist and MPPS Tut
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Association and Negotiations Tutorial", "DICOM Association and Negotiations Tutorial", "{2DB4C31B-0494-44ED-AB41-458DB1F2AF50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomAssociationNegotiationsPart2", "UnderstandingDicomAssociationNegotiationsPart2\UnderstandingDicomAssociationNegotiationsPart2.csproj", "{B1BC3684-A3FF-4617-91D0-4C0CDE02DACB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,10 @@ Global
 		{D76D74DC-591F-47B1-838A-114AA4434C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D76D74DC-591F-47B1-838A-114AA4434C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D76D74DC-591F-47B1-838A-114AA4434C50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1BC3684-A3FF-4617-91D0-4C0CDE02DACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BC3684-A3FF-4617-91D0-4C0CDE02DACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BC3684-A3FF-4617-91D0-4C0CDE02DACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BC3684-A3FF-4617-91D0-4C0CDE02DACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -161,6 +167,8 @@ Global
 		{279C5023-082D-478A-9CF4-38DD9985AD59} = {D97AE867-305C-4354-97A3-FF6D2732E3C0}
 		{62065C26-191E-4AAF-8844-43A9D96F4E04} = {D97AE867-305C-4354-97A3-FF6D2732E3C0}
 		{D76D74DC-591F-47B1-838A-114AA4434C50} = {90464106-AE63-41C7-9E7B-40C27A3AFD49}
+		{7281252C-DACB-433A-877A-8B5BA49F3C4D} = {90464106-AE63-41C7-9E7B-40C27A3AFD49}
+		{B1BC3684-A3FF-4617-91D0-4C0CDE02DACB} = {2DB4C31B-0494-44ED-AB41-458DB1F2AF50}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5310E4A-7F34-42DC-9F79-6A159E4152DB}
