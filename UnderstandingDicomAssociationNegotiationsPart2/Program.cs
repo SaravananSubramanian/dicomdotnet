@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Dicom;
 using Dicom.Network;
 
-namespace UnderstandingDicomVerification
+namespace UnderstandingDicomAssociationNegotiationsPart2
 {
     class Program
     {

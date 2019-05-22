@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using Dicom;
 using Dicom.Network;
-namespace UnderstandingDicomVerification
+
+namespace UnderstandingDicomAssociationNegotiations
 {
     class Program
     {
@@ -37,6 +37,7 @@ namespace UnderstandingDicomVerification
 
             //register that we want to do a DICOM ping here
             var dicomCEchoRequest = new DicomCEchoRequest();
+            
             //attach an event handler when remote peer responds to echo request 
             dicomCEchoRequest.OnResponseReceived += OnEchoResponseReceivedFromRemoteHost;
             client.AddRequest(dicomCEchoRequest);
@@ -73,8 +74,18 @@ namespace UnderstandingDicomVerification
 
             foreach (var presentationContext in association.PresentationContexts)
             {
-                LogToDebugConsole($"\t Abstract syntax accepted: {presentationContext.AbstractSyntax}");
-                LogToDebugConsole($"\t Transfer syntax accepted: {presentationContext.AcceptedTransferSyntax.ToString()}");
+                if (presentationContext.Result == DicomPresentationContextResult.Accept)
+                {
+                    LogToDebugConsole($"\t {presentationContext.AbstractSyntax} was accepted");
+                    LogToDebugConsole($"\t Negotiation result was: {presentationContext.GetResultDescription()}");
+                    LogToDebugConsole($"\t Abstract syntax accepted: {presentationContext.AbstractSyntax}");
+                    LogToDebugConsole($"\t Transfer syntax accepted: {presentationContext.AcceptedTransferSyntax.ToString()}");
+                }
+                else 
+                {
+                    LogToDebugConsole($"\t Presentation context with proposed abstract syntax of '{presentationContext.AbstractSyntax}' was not accepted");
+                    LogToDebugConsole($"\t Reject reason was {presentationContext.GetResultDescription()}");
+                }
             }
         }
 
