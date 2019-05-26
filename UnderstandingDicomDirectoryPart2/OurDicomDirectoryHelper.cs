@@ -6,22 +6,22 @@ namespace UnderstandingDicomDirectoryPart2
 {
     public class OurDicomDirectoryHelper
     {
-        private readonly Action<string> _logger;
+        private readonly Action<string> _log;
 
-        public OurDicomDirectoryHelper(Action<string> logger)
+        public OurDicomDirectoryHelper(Action<string> log)
         {
-            _logger = logger;
+            _log = log;
         }
         public void ShowDicomDirectoryMetaInformation(DicomDirectory dicomDirectory)
         {
-            _logger($"Dicom Directory Information:");
+            _log($"Dicom Directory Information:");
             var fileMetaInfo = dicomDirectory.FileMetaInfo;
-            _logger($"Media Storage SOP Class UID: '{fileMetaInfo.MediaStorageSOPClassUID}'");
-            _logger($"Media Storage SOP Instance UID: '{fileMetaInfo.MediaStorageSOPInstanceUID}'");
-            _logger($"Transfer Syntax: '{fileMetaInfo.TransferSyntax}'");
-            _logger($"Implementation Class UID: '{fileMetaInfo.ImplementationClassUID}'");
-            _logger($"Implementation Version Name: '{fileMetaInfo.ImplementationVersionName}'");
-            _logger($"Source Application Entity Title: '{fileMetaInfo.SourceApplicationEntityTitle}'");
+            _log($"Media Storage SOP Class UID: '{fileMetaInfo.MediaStorageSOPClassUID}'");
+            _log($"Media Storage SOP Instance UID: '{fileMetaInfo.MediaStorageSOPInstanceUID}'");
+            _log($"Transfer Syntax: '{fileMetaInfo.TransferSyntax}'");
+            _log($"Implementation Class UID: '{fileMetaInfo.ImplementationClassUID}'");
+            _log($"Implementation Version Name: '{fileMetaInfo.ImplementationVersionName}'");
+            _log($"Source Application Entity Title: '{fileMetaInfo.SourceApplicationEntityTitle}'");
         }
 
         public void Display(DicomDirectoryRecord record)
@@ -41,7 +41,7 @@ namespace UnderstandingDicomDirectoryPart2
                     ShowImageLevelInfo(record);
                     break;
                 default:
-                    _logger($"Unknown directory record type: {record.DirectoryRecordType}. " +
+                    _log($"Unknown directory record type: {record.DirectoryRecordType}. " +
                             $"Please check your inputs");
                     break;
 
@@ -50,42 +50,42 @@ namespace UnderstandingDicomDirectoryPart2
 
         private void ShowImageLevelInfo(DicomDataset dataset)
         {
-            _logger("\t\t\tImage Level Information:");
+            _log("\t\t\tImage Level Information:");
             var values = dataset.GetValues<string>(DicomTag.ReferencedFileID);
             var referencedFileId = string.Join(@"\", values);
-            _logger($"\t\t\t-> Referenced File ID '{referencedFileId}'");
+            _log($"\t\t\t-> Referenced File ID '{referencedFileId}'");
             //Please see https://www.dicomlibrary.com/dicom/sop/ for what these UIDs represent
             var sopClassUidInFile = dataset.GetValue<string>(DicomTag.ReferencedSOPClassUIDInFile, 0);
-            _logger($"\t\t\t-> Referenced SOP Class UID In File '{sopClassUidInFile}'");
+            _log($"\t\t\t-> Referenced SOP Class UID In File '{sopClassUidInFile}'");
             var sopInstanceUidInFile = dataset.GetValue<string>(DicomTag.ReferencedSOPInstanceUIDInFile, 0);
-            _logger($"\t\t\t-> Referenced SOP Instance UID In File '{sopInstanceUidInFile}'");
+            _log($"\t\t\t-> Referenced SOP Instance UID In File '{sopInstanceUidInFile}'");
             var transferSyntaxUidInFile = dataset.GetValue<string>(DicomTag.ReferencedTransferSyntaxUIDInFile, 0);
-            _logger($"\t\t\t-> Referenced Transfer Syntax UID In File '{transferSyntaxUidInFile}'");
+            _log($"\t\t\t-> Referenced Transfer Syntax UID In File '{transferSyntaxUidInFile}'");
         }
 
         private void ShowSeriesLevelInfo(DicomDataset dataset)
         {
-            _logger("\t\tSeries Level Information:");
+            _log("\t\tSeries Level Information:");
             var seriesInstanceUid = dataset.GetSingleValue<string>(DicomTag.SeriesInstanceUID);
-            _logger($"\t\t-> Series Instance UID: '{seriesInstanceUid}'");
+            _log($"\t\t-> Series Instance UID: '{seriesInstanceUid}'");
             var modality = dataset.GetSingleValue<string>(DicomTag.Modality);
-            _logger($"\t\t-> Series Modality: '{modality}'");
+            _log($"\t\t-> Series Modality: '{modality}'");
         }
 
         private void ShowStudyLevelInfo(DicomDataset dataset)
         {
-            _logger("\tStudy Level Information:");
+            _log("\tStudy Level Information:");
             var studyInstanceUid = dataset.GetSingleValue<string>(DicomTag.StudyInstanceUID);
-            _logger($"\t-> Study Instance UID: '{studyInstanceUid}'");
-            _logger($"\t-> Study ID: '{dataset.GetSingleValue<string>(DicomTag.StudyID)}'");
-            _logger($"\t-> Study Date: '{dataset.GetSingleValue<string>(DicomTag.StudyDate)}'");
+            _log($"\t-> Study Instance UID: '{studyInstanceUid}'");
+            _log($"\t-> Study ID: '{dataset.GetSingleValue<string>(DicomTag.StudyID)}'");
+            _log($"\t-> Study Date: '{dataset.GetSingleValue<string>(DicomTag.StudyDate)}'");
         }
 
         private void ShowPatientLevelInfo(DicomDataset dataset)
         {
-            _logger("Patient Level Information:");
-            _logger($"-> Patient Name: '{dataset.GetSingleValue<string>(DicomTag.PatientName)}'");
-            _logger($"-> Patient ID: '{dataset.GetSingleValue<string>(DicomTag.PatientID)}'");
+            _log("Patient Level Information:");
+            _log($"-> Patient Name: '{dataset.GetSingleValue<string>(DicomTag.PatientName)}'");
+            _log($"-> Patient ID: '{dataset.GetSingleValue<string>(DicomTag.PatientID)}'");
         }
     }
 }
