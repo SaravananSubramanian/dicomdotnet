@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dicom.Core, Version=4.0.1.0, Culture=neutral, PublicKeyToken=3a13f649e28eb09a, processorArchitecture=MSIL">
+      <HintPath>..\packages\fo-dicom.Desktop.4.0.1\lib\net45\Dicom.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +52,38 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Test Files\DICOMDIR">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Test Files\Images\CT1_UNC" />
+    <None Include="Test Files\Images\CT2_UNC" />
+    <None Include="Test Files\Images\MG1_UNC" />
+    <None Include="Test Files\Images\MR1_UNC" />
+    <None Include="Test Files\Images\MR2_UNC" />
+    <None Include="Test Files\Images\MR3_UNC" />
+    <None Include="Test Files\Images\MR4_UNC" />
+    <None Include="Test Files\Images\NM1_UNC" />
+    <None Include="Test Files\Images\RG1_UNC" />
+    <None Include="Test Files\Images\RG2_UNC" />
+    <None Include="Test Files\Images\RG3_UNC" />
+    <None Include="Test Files\Images\SC1_UNC" />
+    <None Include="Test Files\Images\US1_UNC" />
+    <None Include="Test Files\Images\VL1_UNC" />
+    <None Include="Test Files\Images\VL2_UNC" />
+    <None Include="Test Files\Images\VL3_UNC" />
+    <None Include="Test Files\Images\VL4_UNC" />
+    <None Include="Test Files\Images\VL5_UNC" />
+    <None Include="Test Files\Images\VL6_UNC" />
+    <None Include="Test Files\Images\XA1_UNC" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\fo-dicom.Desktop.4.0.1\build\net45\fo-dicom.Desktop.targets" Condition="Exists('..\packages\fo-dicom.Desktop.4.0.1\build\net45\fo-dicom.Desktop.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\fo-dicom.Desktop.4.0.1\build\net45\fo-dicom.Desktop.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\fo-dicom.Desktop.4.0.1\build\net45\fo-dicom.Desktop.targets'))" />
+  </Target>
 </Project>
