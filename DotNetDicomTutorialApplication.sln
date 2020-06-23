@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakingSenseOfDicomFile", "MakingSenseOfDicomFile\MakingSenseOfDicomFile.csproj", "{A57C87E9-39CF-4C2B-9EA0-CDDC60F9A8E7}"
 EndProject
@@ -18,10 +18,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomAssociationNegotiations", "UnderstandingDicomAssociationNegotiations\UnderstandingDicomAssociationNegotiations.csproj", "{B0D8E6EA-FB80-4C02-A8F9-FD935B9E3490}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandlingTransientErrorsDuringCommunication", "HandlingTransientErrorsDuringCommunication\HandlingTransientErrorsDuringCommunication.csproj", "{EE12D415-92E7-4453-A1CC-A2F6947963C8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomQueryRetreiveOperationsPart1", "DicomQueryRetreiveOperationsPart1\DicomQueryRetreiveOperationsPart1.csproj", "{5A88B114-8B78-437D-82B1-6999AF030B42}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomQueryRetreiveOperationsPart2", "DicomQueryRetreiveOperationsPart2\DicomQueryRetreiveOperationsPart2.csproj", "{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomStorageCommitmentService", "DicomStorageCommitmentService\DicomStorageCommitmentService.csproj", "{FD368589-D2EA-45FB-9C5C-764A64D6C444}"
 EndProject
@@ -71,6 +67,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomDirectory
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomDirectoryPart3", "UnderstandingDicomDirectoryPart3\UnderstandingDicomDirectoryPart3.csproj", "{0ADF39B3-4230-463E-909F-51D2F56FF746}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomFindOperation", "DicomQueryRetreiveOperationsPart1\DicomFindOperation.csproj", "{5A88B114-8B78-437D-82B1-6999AF030B42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Echo Verification with Orthanc Server", "DICOM Echo Verification with Orthanc Server", "{957EEADB-B131-4886-856D-6DC8C4F36001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DICOM Echo Verification with Orthanc Server", "DICOM Echo Verification with Orthanc Server\DICOM Echo Verification with Orthanc Server.csproj", "{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,14 +111,6 @@ Global
 		{EE12D415-92E7-4453-A1CC-A2F6947963C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE12D415-92E7-4453-A1CC-A2F6947963C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE12D415-92E7-4453-A1CC-A2F6947963C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A88B114-8B78-437D-82B1-6999AF030B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A88B114-8B78-437D-82B1-6999AF030B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A88B114-8B78-437D-82B1-6999AF030B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A88B114-8B78-437D-82B1-6999AF030B42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD368589-D2EA-45FB-9C5C-764A64D6C444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD368589-D2EA-45FB-9C5C-764A64D6C444}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD368589-D2EA-45FB-9C5C-764A64D6C444}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -157,6 +151,14 @@ Global
 		{0ADF39B3-4230-463E-909F-51D2F56FF746}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ADF39B3-4230-463E-909F-51D2F56FF746}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ADF39B3-4230-463E-909F-51D2F56FF746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A88B114-8B78-437D-82B1-6999AF030B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A88B114-8B78-437D-82B1-6999AF030B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A88B114-8B78-437D-82B1-6999AF030B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A88B114-8B78-437D-82B1-6999AF030B42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,8 +172,6 @@ Global
 		{6B3A2A8C-D24C-4CEB-8DD5-5E6AA7FCC4E8} = {D7EF2FB2-5793-4B5B-B965-959995893031}
 		{B0D8E6EA-FB80-4C02-A8F9-FD935B9E3490} = {2DB4C31B-0494-44ED-AB41-458DB1F2AF50}
 		{EE12D415-92E7-4453-A1CC-A2F6947963C8} = {ED6CD88B-35F7-4878-A176-A123153A9E7E}
-		{5A88B114-8B78-437D-82B1-6999AF030B42} = {7C0CA0A0-D7E5-45A8-ADE1-3054C77ABC4F}
-		{8EB7B769-E6FD-4858-80D7-6452C5ADC17D} = {7C0CA0A0-D7E5-45A8-ADE1-3054C77ABC4F}
 		{FD368589-D2EA-45FB-9C5C-764A64D6C444} = {2A7714F8-6B3E-49BF-902D-428054770535}
 		{C37CD4BE-B92C-4F44-8C6E-B1D0C4E2A205} = {F6BFB2C4-AA0F-4827-B4B4-3518CE9C7204}
 		{62034CFD-D0CE-4295-AE56-49BDE354A9B8} = {F7213711-399B-4AA2-A54A-EF85A5719B41}
@@ -182,6 +182,8 @@ Global
 		{B1BC3684-A3FF-4617-91D0-4C0CDE02DACB} = {2DB4C31B-0494-44ED-AB41-458DB1F2AF50}
 		{76A9CAC2-C4D4-417A-9803-F08D827F4721} = {80A66AD4-B342-44D7-A6A8-2C714477E490}
 		{0ADF39B3-4230-463E-909F-51D2F56FF746} = {80A66AD4-B342-44D7-A6A8-2C714477E490}
+		{5A88B114-8B78-437D-82B1-6999AF030B42} = {7C0CA0A0-D7E5-45A8-ADE1-3054C77ABC4F}
+		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F} = {957EEADB-B131-4886-856D-6DC8C4F36001}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5310E4A-7F34-42DC-9F79-6A159E4152DB}
