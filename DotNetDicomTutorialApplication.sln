@@ -73,6 +73,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Echo Verification wit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DICOM Echo Verification with Orthanc Server", "DICOM Echo Verification with Orthanc Server\DICOM Echo Verification with Orthanc Server.csproj", "{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DicomCStoreTutorial", "DicomCStoreTutorial", "{692EEBB3-C6BF-4D51-8132-17DF34C8483F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomCStoreTutorial", "DicomCStoreTutorial\DicomCStoreTutorial.csproj", "{11CA9D27-8287-4EDE-9C6F-67761A26056D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +163,10 @@ Global
 		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11CA9D27-8287-4EDE-9C6F-67761A26056D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11CA9D27-8287-4EDE-9C6F-67761A26056D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11CA9D27-8287-4EDE-9C6F-67761A26056D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11CA9D27-8287-4EDE-9C6F-67761A26056D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -184,6 +192,7 @@ Global
 		{0ADF39B3-4230-463E-909F-51D2F56FF746} = {80A66AD4-B342-44D7-A6A8-2C714477E490}
 		{5A88B114-8B78-437D-82B1-6999AF030B42} = {7C0CA0A0-D7E5-45A8-ADE1-3054C77ABC4F}
 		{1DCEDE32-3637-4F14-8BA0-6A164FA0851F} = {957EEADB-B131-4886-856D-6DC8C4F36001}
+		{11CA9D27-8287-4EDE-9C6F-67761A26056D} = {692EEBB3-C6BF-4D51-8132-17DF34C8483F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5310E4A-7F34-42DC-9F79-6A159E4152DB}

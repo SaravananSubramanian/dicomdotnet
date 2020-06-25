@@ -17,7 +17,7 @@ namespace UnderstandingDicomAssociationNegotiationsPart2
                 var dicomRemoteHost = "www.dicomserver.co.uk";
                 var dicomRemoteHostPort = 11112;
                 var useTls = false;
-                var ourDotNetTestClientDicomAeTitle = "Our Dot Net Test Client";
+                var ourDotNetTestClientDicomAeTitle = "OurDotNetTestClient";
                 var remoteDicomHostAeTitle = "Dr.Dave Harvey's Server";
 
                 //create DICOM client
