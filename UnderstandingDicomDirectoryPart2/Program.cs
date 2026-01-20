@@ -1,4 +1,40 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// Tutorial: Navigating DICOMDIR Hierarchical Structure
+//-----------------------------------------------------------------------
+// Purpose:
+//   Demonstrates how to programmatically navigate the hierarchical
+//   structure of a DICOMDIR file (Patient > Study > Series > Image).
+//
+// Key Concepts:
+//   - DICOMDIR uses Directory Record Sequence (0004,1220) for structure
+//   - Each record type contains specific attributes
+//   - Navigation is done via LowerLevelDirectoryRecordCollection
+//   - Record types: PATIENT, STUDY, SERIES, IMAGE (and others)
+//
+// Directory Record Hierarchy:
+//   RootDirectoryRecordCollection (PATIENT records)
+//   └── LowerLevelDirectoryRecordCollection (STUDY records)
+//       └── LowerLevelDirectoryRecordCollection (SERIES records)
+//           └── LowerLevelDirectoryRecordCollection (IMAGE records)
+//
+// Key Attributes per Record Type:
+//   PATIENT: Patient Name, Patient ID, Birth Date, Sex
+//   STUDY:   Study Instance UID, Study Date, Study ID, Description
+//   SERIES:  Series Instance UID, Modality, Series Number
+//   IMAGE:   SOP Instance UID, Instance Number, Referenced File ID
+//
+// Requirements:
+//   - DICOMDIR file: Place a DICOMDIR file in the "Test Files" folder
+//   - Sample DICOMDIR files available from medical imaging datasets
+//
+// fo-dicom References:
+//   - DicomDirectory - Represents a DICOMDIR file
+//   - RootDirectoryRecordCollection - Top-level patient records
+//   - LowerLevelDirectoryRecordCollection - Child records
+//   - DicomDirectoryRecord - Individual record with attributes
+//-----------------------------------------------------------------------
+
+using System;
 using System.Diagnostics;
 using System.IO;
 using Dicom.Media;
@@ -7,54 +43,82 @@ namespace UnderstandingDicomDirectoryPart2
 {
     public class Program
     {
-        private static readonly string PathToDicomDirectoryFile = 
+        //-----------------------------------------------------------------------
+        // Configuration: Path to DICOMDIR file
+        // NOTE: Ensure a valid DICOMDIR file exists at this path before running
+        //-----------------------------------------------------------------------
+        private static readonly string PathToDicomDirectoryFile =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Test Files", "DICOMDIR");
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            LogToDebugConsole("Performing Dicom directory dump:");
-
             try
             {
+                LogToDebugConsole("=== Navigating DICOMDIR Structure Tutorial ===");
+                LogToDebugConsole($"Opening DICOMDIR: {PathToDicomDirectoryFile}");
+                LogToDebugConsole("");
+
+                // Verify DICOMDIR exists
+                if (!File.Exists(PathToDicomDirectoryFile))
+                {
+                    LogToDebugConsole("ERROR: DICOMDIR file not found!");
+                    LogToDebugConsole("Please place a DICOMDIR file in the 'Test Files' folder.");
+                    return;
+                }
+
+                // Open and parse the DICOMDIR file
                 var dicomDirectory = DicomDirectory.Open(PathToDicomDirectoryFile);
 
-                var dicomDirectoryHelper = new OurDicomDirectoryHelper(LogToDebugConsole);
+                // Create helper for formatted display
+                var helper = new OurDicomDirectoryHelper(LogToDebugConsole);
 
-                dicomDirectoryHelper.ShowDicomDirectoryMetaInformation(dicomDirectory);
+                // Display DICOMDIR meta information
+                helper.ShowDicomDirectoryMetaInformation(dicomDirectory);
 
+                //-----------------------------------------------------------------------
+                // Navigate the hierarchical structure
+                // PATIENT > STUDY > SERIES > IMAGE
+                //-----------------------------------------------------------------------
+                LogToDebugConsole("--- Directory Structure ---");
+                LogToDebugConsole("");
+
+                // Iterate through PATIENT records (root level)
                 foreach (var patientRecord in dicomDirectory.RootDirectoryRecordCollection)
                 {
-                    dicomDirectoryHelper.Display(patientRecord);
+                    helper.Display(patientRecord);
 
+                    // Iterate through STUDY records under each patient
                     foreach (var studyRecord in patientRecord.LowerLevelDirectoryRecordCollection)
                     {
-                        dicomDirectoryHelper.Display(studyRecord);
+                        helper.Display(studyRecord);
 
+                        // Iterate through SERIES records under each study
                         foreach (var seriesRecord in studyRecord.LowerLevelDirectoryRecordCollection)
                         {
-                            dicomDirectoryHelper.Display(seriesRecord);
+                            helper.Display(seriesRecord);
 
+                            // Iterate through IMAGE records under each series
                             foreach (var imageRecord in seriesRecord.LowerLevelDirectoryRecordCollection)
                             {
-                                dicomDirectoryHelper.Display(imageRecord);
+                                helper.Display(imageRecord);
                             }
                         }
                     }
                 }
 
-                
-                LogToDebugConsole("Dicom directory dump operation was successful");
+                LogToDebugConsole("");
+                LogToDebugConsole("DICOMDIR navigation completed successfully!");
             }
             catch (Exception ex)
             {
-                LogToDebugConsole($"Error occured during Dicom directory dump. Error:{ex.Message}");
+                LogToDebugConsole($"Error navigating DICOMDIR: {ex.Message}");
+                LogToDebugConsole($"Stack trace: {ex.StackTrace}");
             }
         }
 
-        private static void LogToDebugConsole(string informationToLog)
+        private static void LogToDebugConsole(string message)
         {
-            Debug.WriteLine(informationToLog);
+            Debug.WriteLine(message);
         }
-
     }
 }

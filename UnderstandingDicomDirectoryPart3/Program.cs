@@ -1,6 +1,42 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// Tutorial: Creating DICOMDIR Files
+//-----------------------------------------------------------------------
+// Purpose:
+//   Demonstrates how to create a DICOMDIR file from a collection of
+//   DICOM image files programmatically.
+//
+// Key Concepts:
+//   - DICOMDIR creation indexes DICOM files for portable media
+//   - File paths must follow DICOM Media Application Profile rules:
+//     - Max 8 characters per path component
+//     - Uppercase letters, digits, underscore only
+//     - Use backslash as separator
+//   - fo-dicom extracts necessary attributes from each file
+//
+// File Naming Rules:
+//   - Path components: max 8 characters each
+//   - Allowed characters: A-Z, 0-9, _
+//   - Example: DICOM\STUDY1\SERIES1\IMAGE001
+//
+// Use Cases:
+//   - Creating DICOM CDs/DVDs for patient records
+//   - Packaging DICOM files for file-based exchange
+//   - Organizing DICOM collections for archive
+//
+// Requirements:
+//   - DICOM image files: Place .dcm files in "Test DICOM Images" folder
+//   - Sample files available from: https://www.dicomlibrary.com/
+//
+// fo-dicom References:
+//   - DicomDirectory - Create and manage DICOMDIR
+//   - DicomDirectory.AddFile() - Add a DICOM file to the directory
+//   - DicomDirectory.Save() - Write DICOMDIR to disk
+//-----------------------------------------------------------------------
+
+using System;
 using System.Diagnostics;
 using System.IO;
+using Dicom;
 using Dicom.Log;
 using Dicom.Media;
 
@@ -8,55 +44,107 @@ namespace UnderstandingDicomDirectoryPart3
 {
     public class Program
     {
+        //-----------------------------------------------------------------------
+        // Configuration: Path to folder containing DICOM images
+        // NOTE: Place .dcm files in this folder before running
+        //-----------------------------------------------------------------------
         private static readonly string PathToDicomImages =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Test DICOM Images");
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            LogToDebugConsole("Creating Dicom directory...");
-
             try
             {
-                //location where we will create the DICOMDIR file from the images
-                var pathToOutputDicomDirectoryFile = Path.Combine(PathToDicomImages, "DICOMDIR");
+                LogToDebugConsole("=== Creating DICOMDIR Tutorial ===");
+                LogToDebugConsole($"Source folder: {PathToDicomImages}");
+                LogToDebugConsole("");
 
-                if (File.Exists(pathToOutputDicomDirectoryFile))
+                // Verify source folder exists
+                if (!Directory.Exists(PathToDicomImages))
                 {
-                    LogToDebugConsole($"Dicom directory file already exists at '{pathToOutputDicomDirectoryFile}'. Deleting...");
-                    File.Delete(pathToOutputDicomDirectoryFile);
+                    LogToDebugConsole("ERROR: Source folder not found!");
+                    LogToDebugConsole("Please create the 'Test DICOM Images' folder and add .dcm files.");
+                    return;
                 }
 
-                var directoryInfoForDicomImagesFolder = new DirectoryInfo(PathToDicomImages);
+                // Output DICOMDIR path
+                var dicomdirPath = Path.Combine(PathToDicomImages, "DICOMDIR");
+
+                // Remove existing DICOMDIR if present
+                if (File.Exists(dicomdirPath))
+                {
+                    LogToDebugConsole($"Removing existing DICOMDIR: {dicomdirPath}");
+                    File.Delete(dicomdirPath);
+                }
+
+                //-----------------------------------------------------------------------
+                // Create new DICOMDIR and add files
+                //-----------------------------------------------------------------------
+                LogToDebugConsole("");
+                LogToDebugConsole("--- Creating DICOMDIR ---");
 
                 var dicomDir = new DicomDirectory();
+                var directoryInfo = new DirectoryInfo(PathToDicomImages);
+                var files = directoryInfo.GetFiles("*.dcm", SearchOption.AllDirectories);
 
-                foreach (var file in directoryInfoForDicomImagesFolder.GetFiles("*.*", SearchOption.AllDirectories))
+                LogToDebugConsole($"Found {files.Length} DICOM files to index");
+                LogToDebugConsole("");
+
+                int fileCount = 0;
+                foreach (var file in files)
                 {
-                    var dicomFile = Dicom.DicomFile.Open(file.FullName);
+                    try
+                    {
+                        // Open each DICOM file
+                        var dicomFile = DicomFile.Open(file.FullName);
 
-                    dicomDir.AddFile(dicomFile, $@"000001\{file.Name}");
+                        // Create a relative path for the DICOMDIR reference
+                        // Path format: FOLDER\FILENAME (max 8 chars each, uppercase)
+                        var relativePath = $@"IMAGES\{file.Name.Substring(0, Math.Min(8, file.Name.Length)).ToUpper()}";
+
+                        // Add file to DICOMDIR
+                        dicomDir.AddFile(dicomFile, relativePath);
+                        fileCount++;
+
+                        LogToDebugConsole($"  Added: {file.Name} -> {relativePath}");
+                    }
+                    catch (Exception ex)
+                    {
+                        LogToDebugConsole($"  Skipped: {file.Name} - {ex.Message}");
+                    }
                 }
 
-                dicomDir.Save(pathToOutputDicomDirectoryFile);
+                //-----------------------------------------------------------------------
+                // Save the DICOMDIR
+                //-----------------------------------------------------------------------
+                LogToDebugConsole("");
+                LogToDebugConsole("Saving DICOMDIR...");
+                dicomDir.Save(dicomdirPath);
 
-                LogToDebugConsole($"Dicom directory creation was successful. DICOMDIR file created at '{pathToOutputDicomDirectoryFile}'");
+                LogToDebugConsole($"DICOMDIR created successfully!");
+                LogToDebugConsole($"Output: {dicomdirPath}");
+                LogToDebugConsole($"Files indexed: {fileCount}");
+                LogToDebugConsole("");
 
-                var dicomDirectory = DicomDirectory.Open(pathToOutputDicomDirectoryFile);
+                //-----------------------------------------------------------------------
+                // Verify by reading back the created DICOMDIR
+                //-----------------------------------------------------------------------
+                LogToDebugConsole("--- Verifying Created DICOMDIR ---");
+                LogToDebugConsole("");
 
-                LogToDebugConsole("Outputing the newly created DICOM directory information to console");
-
-                LogToDebugConsole(dicomDirectory.WriteToString());
+                var createdDir = DicomDirectory.Open(dicomdirPath);
+                LogToDebugConsole(createdDir.WriteToString());
             }
             catch (Exception ex)
             {
-                LogToDebugConsole($"Error occured during Dicom directory dump. Error:{ex.Message}");
+                LogToDebugConsole($"Error creating DICOMDIR: {ex.Message}");
+                LogToDebugConsole($"Stack trace: {ex.StackTrace}");
             }
         }
 
-        private static void LogToDebugConsole(string informationToLog)
+        private static void LogToDebugConsole(string message)
         {
-            Debug.WriteLine(informationToLog);
+            Debug.WriteLine(message);
         }
-
     }
 }

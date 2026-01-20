@@ -67,7 +67,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomDirectory
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnderstandingDicomDirectoryPart3", "UnderstandingDicomDirectoryPart3\UnderstandingDicomDirectoryPart3.csproj", "{0ADF39B3-4230-463E-909F-51D2F56FF746}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomFindOperation", "DicomQueryRetreiveOperationsPart1\DicomFindOperation.csproj", "{5A88B114-8B78-437D-82B1-6999AF030B42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomCFindOperation", "DicomCFindOperation\DicomCFindOperation.csproj", "{5A88B114-8B78-437D-82B1-6999AF030B42}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DICOM Echo Verification with Orthanc Server", "DICOM Echo Verification with Orthanc Server", "{957EEADB-B131-4886-856D-6DC8C4F36001}"
 EndProject
