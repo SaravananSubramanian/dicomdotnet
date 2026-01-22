@@ -52,7 +52,7 @@
 using System;
 using System.Diagnostics;
 
-namespace UnderstandingDicomPrintOperations
+namespace Com.SaravananSubramanian.UnderstandingDicomPrintOperations
 {
     public class Program
     {

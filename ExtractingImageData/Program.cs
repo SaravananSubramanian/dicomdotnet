@@ -40,7 +40,7 @@ using System.IO;
 using Dicom;
 using Dicom.Imaging;
 
-namespace ExtractingImageData
+namespace Com.SaravananSubramanian.ExtractingImageData
 {
     public class Program
     {

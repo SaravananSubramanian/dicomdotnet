@@ -44,7 +44,7 @@ using System.Diagnostics;
 using System.IO;
 using Dicom;
 
-namespace UnderstandingDicomStructuredReports
+namespace Com.SaravananSubramanian.UnderstandingDicomStructuredReports
 {
     public class Program
     {

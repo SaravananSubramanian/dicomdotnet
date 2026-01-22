@@ -2,7 +2,7 @@
 using Dicom;
 using Dicom.Media;
 
-namespace UnderstandingDicomDirectoryPart2
+namespace Com.SaravananSubramanian.UnderstandingDicomDirectoryPart2
 {
     public class OurDicomDirectoryHelper
     {

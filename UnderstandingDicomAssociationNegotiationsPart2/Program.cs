@@ -39,7 +39,7 @@ using System.Diagnostics;
 using Dicom;
 using Dicom.Network;
 
-namespace UnderstandingDicomAssociationNegotiationsPart2
+namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiationsPart2
 {
     public class Program
     {

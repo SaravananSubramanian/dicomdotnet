@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B1BC3684-A3FF-4617-91D0-4C0CDE02DACB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>UnderstandingDicomAssociationNegotiationsPart2</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiationsPart2</RootNamespace>
     <AssemblyName>UnderstandingDicomAssociationNegotiationsPart2</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{62034CFD-D0CE-4295-AE56-49BDE354A9B8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>UnderstandingDicomStructuredReports</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.UnderstandingDicomStructuredReports</RootNamespace>
     <AssemblyName>UnderstandingDicomStructuredReports</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -46,7 +46,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace UnderstandingDicomWeb
+namespace Com.SaravananSubramanian.UnderstandingDicomWeb
 {
     public class Program
     {

@@ -45,7 +45,7 @@ using System.Diagnostics;
 using System.IO;
 using Dicom.Network;
 
-namespace DICOMEchoVerificationWithOrthancServer
+namespace Com.SaravananSubramanian.DicomCStoreTutorial
 {
     public class Program
     {

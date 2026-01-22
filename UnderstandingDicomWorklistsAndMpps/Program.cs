@@ -54,7 +54,7 @@ using System.Diagnostics;
 using Dicom;
 using Dicom.Network;
 
-namespace UnderstandingDicomWorklistsAndMpps
+namespace Com.SaravananSubramanian.UnderstandingDicomWorklistsAndMpps
 {
     public class Program
     {

@@ -52,7 +52,7 @@
 using System;
 using System.Diagnostics;
 
-namespace DicomStorageCommitmentService
+namespace Com.SaravananSubramanian.DicomStorageCommitmentService
 {
     public class Program
     {

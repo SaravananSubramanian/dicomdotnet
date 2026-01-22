@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FD368589-D2EA-45FB-9C5C-764A64D6C444}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DicomStorageCommitmentService</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.DicomStorageCommitmentService</RootNamespace>
     <AssemblyName>DicomStorageCommitmentService</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

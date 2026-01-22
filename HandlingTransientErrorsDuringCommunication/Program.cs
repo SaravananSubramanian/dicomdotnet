@@ -47,7 +47,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Dicom.Network;
 
-namespace HandlingTransientErrorsDuringCommunication
+namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
 {
     public class Program
     {

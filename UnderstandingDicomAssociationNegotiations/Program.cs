@@ -37,7 +37,7 @@ using System;
 using System.Diagnostics;
 using Dicom.Network;
 
-namespace UnderstandingDicomAssociationNegotiations
+namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiations
 {
     public class Program
     {

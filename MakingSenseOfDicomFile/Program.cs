@@ -27,7 +27,7 @@ using System.Diagnostics;
 using System.IO;
 using Dicom;
 
-namespace MakingSenseOfDicomFile
+namespace Com.SaravananSubramanian.MakingSenseOfDicomFile
 {
     public class Program
     {

@@ -39,7 +39,7 @@ using System.Diagnostics;
 using System.IO;
 using Dicom.Media;
 
-namespace UnderstandingDicomDirectoryPart2
+namespace Com.SaravananSubramanian.UnderstandingDicomDirectoryPart2
 {
     public class Program
     {

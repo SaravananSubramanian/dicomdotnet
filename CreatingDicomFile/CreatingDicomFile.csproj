@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7201CE89-77B4-4AF1-B590-602A339F9CC0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CreatingDicomFile</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.CreatingDicomFile</RootNamespace>
     <AssemblyName>CreatingDicomFile</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 
-namespace DICOMEchoVerificationWithOrthancServer
+namespace Com.SaravananSubramanian.DICOMEchoVerificationWithOrthancServer
 {
     class Program
     {

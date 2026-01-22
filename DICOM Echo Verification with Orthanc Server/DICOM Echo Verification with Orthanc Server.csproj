@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1DCEDE32-3637-4F14-8BA0-6A164FA0851F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DICOMEchoVerificationWithOrthancServer</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.DICOMEchoVerificationWithOrthancServer</RootNamespace>
     <AssemblyName>DICOMEchoVerificationWithOrthancServer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

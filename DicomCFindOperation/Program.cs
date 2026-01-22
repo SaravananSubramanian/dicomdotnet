@@ -48,7 +48,7 @@ using System.Diagnostics;
 using Dicom;
 using Dicom.Network;
 
-namespace DicomCFindOperation
+namespace Com.SaravananSubramanian.DicomCFindOperation
 {
     public class Program
     {

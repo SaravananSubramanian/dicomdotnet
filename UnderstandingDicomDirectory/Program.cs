@@ -40,7 +40,7 @@ using System.IO;
 using Dicom.Log;
 using Dicom.Media;
 
-namespace UnderstandingDicomDirectory
+namespace Com.SaravananSubramanian.UnderstandingDicomDirectory
 {
     public class Program
     {

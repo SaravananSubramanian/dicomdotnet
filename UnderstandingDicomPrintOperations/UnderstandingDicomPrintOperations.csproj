@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F4DD5D65-ACEC-4BD9-B13D-940FFEA64D21}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>UnderstandingDicomPrintOperations</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.UnderstandingDicomPrintOperations</RootNamespace>
     <AssemblyName>UnderstandingDicomPrintOperations</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

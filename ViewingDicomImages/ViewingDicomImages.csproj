@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B4E37BB9-C4AD-46D7-90D4-AB07714B7340}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ViewingDicomImages</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.ViewingDicomImages</RootNamespace>
     <AssemblyName>ViewingDicomImages</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -40,7 +40,7 @@ using System.IO;
 using Dicom;
 using Dicom.Imaging;
 
-namespace ViewingDicomImages
+namespace Com.SaravananSubramanian.ViewingDicomImages
 {
     public class Program
     {

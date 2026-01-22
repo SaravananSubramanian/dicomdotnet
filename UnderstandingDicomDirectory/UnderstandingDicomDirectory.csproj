@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1C427E01-E042-41BA-9EB1-ACD1D0CE9E66}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>UnderstandingDicomDirectory</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.UnderstandingDicomDirectory</RootNamespace>
     <AssemblyName>UnderstandingDicomDirectory</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

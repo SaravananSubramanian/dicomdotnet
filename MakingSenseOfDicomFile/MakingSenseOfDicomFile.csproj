@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A57C87E9-39CF-4C2B-9EA0-CDDC60F9A8E7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MakingSenseOfDicomFile</RootNamespace>
+    <RootNamespace>Com.SaravananSubramanian.MakingSenseOfDicomFile</RootNamespace>
     <AssemblyName>MakingSenseOfDicomFile</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

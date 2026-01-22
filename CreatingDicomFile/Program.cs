@@ -31,7 +31,7 @@ using System.IO;
 using Dicom;
 using Dicom.Imaging;
 
-namespace CreatingDicomFile
+namespace Com.SaravananSubramanian.CreatingDicomFile
 {
     public class Program
     {

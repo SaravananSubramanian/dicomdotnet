@@ -39,7 +39,7 @@ using System;
 using System.Diagnostics;
 using Dicom.Network;
 
-namespace UnderstandingDicomVerification
+namespace Com.SaravananSubramanian.UnderstandingDicomVerification
 {
     public class Program
     {
