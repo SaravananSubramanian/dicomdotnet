@@ -4,12 +4,21 @@
 // Purpose:
 //   Demonstrates how to display DICOM images and apply Window Width
 //   and Window Center (Level) adjustments for optimal visualization.
+//   This tutorial includes an interactive Windows Forms viewer that
+//   allows real-time adjustment of Window/Level settings.
 //
 // Key Concepts:
 //   - Window Width (WW): Controls contrast - range of gray values displayed
 //   - Window Center/Level (WL): Controls brightness - center of the range
 //   - Formula: if (pixel <= WL - WW/2) => black; if (pixel >= WL + WW/2) => white
 //   - Common CT Presets: Lung (WW=1500, WL=-600), Bone (WW=2500, WL=480)
+//
+// Interactive Viewer Features:
+//   - Real-time image rendering as Window/Level values change
+//   - Slider controls for fine adjustment of Window Width and Center
+//   - Preset buttons for common CT viewing configurations
+//   - Keyboard shortcuts: R=Reset, S=Save, 1-5=Presets, Esc=Close
+//   - Display of DICOM metadata (patient, study, modality, etc.)
 //
 // Requirements:
 //   - DICOM test file: Place a .dcm file in the "Test Files" folder
@@ -25,6 +34,8 @@
 //   | Soft Tissue | 400   | 40     | CT soft tissue    |
 //   | Brain       | 80    | 40     | CT brain          |
 //   | Abdomen     | 350   | 50     | CT abdomen        |
+//   | Mediastinum | 500   | 50     | CT mediastinum    |
+//   | Liver       | 150   | 30     | CT liver          |
 //
 // fo-dicom References:
 //   - DicomImage - Image rendering with W/L support
@@ -37,6 +48,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Windows.Forms;
 using Dicom;
 using Dicom.Imaging;
 
@@ -50,10 +62,11 @@ namespace Com.SaravananSubramanian.ViewingDicomImages
         // For best results, use a CT image with embedded window/level values
         //-----------------------------------------------------------------------
         private static readonly string PathToDicomTestFile =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Test Files", "0002.dcm");
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Test Files", "CT_small.dcm");
         private static readonly string OutputPath =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Output");
 
+        [STAThread]
         public static void Main(string[] args)
         {
             try
@@ -66,6 +79,14 @@ namespace Com.SaravananSubramanian.ViewingDicomImages
                 if (!Directory.Exists(OutputPath))
                 {
                     Directory.CreateDirectory(OutputPath);
+                }
+
+                // Verify the DICOM file exists
+                if (!File.Exists(PathToDicomTestFile))
+                {
+                    LogToDebugConsole($"ERROR: DICOM file not found at: {PathToDicomTestFile}");
+                    LogToDebugConsole("Please place a DICOM file in the 'Test Files' folder.");
+                    return;
                 }
 
                 // Open the DICOM file
@@ -97,9 +118,9 @@ namespace Com.SaravananSubramanian.ViewingDicomImages
                 LogToDebugConsole("");
 
                 //-----------------------------------------------------------------------
-                // Render with default settings
+                // Render with default settings and save to files
                 //-----------------------------------------------------------------------
-                LogToDebugConsole("--- Rendering Images ---");
+                LogToDebugConsole("--- Rendering Images to Files ---");
 
                 var dicomImage = new DicomImage(PathToDicomTestFile);
 
@@ -138,12 +159,40 @@ namespace Com.SaravananSubramanian.ViewingDicomImages
 
                 LogToDebugConsole("");
                 LogToDebugConsole($"All images saved to: {OutputPath}");
+
+                //-----------------------------------------------------------------------
+                // Launch the Interactive DICOM Image Viewer
+                //-----------------------------------------------------------------------
+                LogToDebugConsole("");
+                LogToDebugConsole("--- Launching Interactive DICOM Viewer ---");
+                LogToDebugConsole("  Keyboard shortcuts:");
+                LogToDebugConsole("    R     - Reset to original window/level values");
+                LogToDebugConsole("    S     - Save current view to file");
+                LogToDebugConsole("    1-5   - Apply presets (1=Lung, 2=Bone, 3=Soft Tissue, 4=Brain, 5=Abdomen)");
+                LogToDebugConsole("    Esc   - Close viewer");
+                LogToDebugConsole("");
+
+                // Initialize Windows Forms
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+
+                // Launch the interactive viewer
+                using (var viewer = new DicomImageViewer(PathToDicomTestFile))
+                {
+                    Application.Run(viewer);
+                }
+
                 LogToDebugConsole("Image viewing tutorial completed successfully!");
             }
             catch (Exception e)
             {
                 LogToDebugConsole($"Error viewing DICOM image: {e.Message}");
                 LogToDebugConsole($"Stack trace: {e.StackTrace}");
+                MessageBox.Show(
+                    $"Error: {e.Message}\n\nPlease ensure a valid DICOM file exists at:\n{PathToDicomTestFile}",
+                    "DICOM Viewer Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
@@ -162,6 +211,7 @@ namespace Com.SaravananSubramanian.ViewingDicomImages
         private static void LogToDebugConsole(string message)
         {
             Debug.WriteLine(message);
+            Console.WriteLine(message);
         }
     }
 }
