@@ -43,7 +43,11 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Dicom.Network;
+using System.Threading;
+using System.Threading.Tasks;
+using FellowOakDicom.Network;
+using FellowOakDicom.Network.Client;
+using FellowOakDicom.Network.Client.EventArguments;
 
 namespace Com.SaravananSubramanian.DicomCStoreTutorial
 {
@@ -68,7 +72,7 @@ namespace Com.SaravananSubramanian.DicomCStoreTutorial
         private static readonly string LocalAeTitle = "FODICOM_SCU";
         private static readonly bool UseTls = false;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -90,13 +94,13 @@ namespace Com.SaravananSubramanian.DicomCStoreTutorial
                 }
 
                 // Create DICOM store client with event handlers
-                var client = CreateDicomStoreClient(PathToDicomTestFile);
+                var client = await CreateDicomStoreClient(PathToDicomTestFile);
 
                 LogToDebugConsole("Sending C-STORE request...");
                 LogToDebugConsole("");
 
                 // Send the file to the remote DICOM server
-                client.Send(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
+                await client.SendAsync(CancellationToken.None);
 
                 LogToDebugConsole("");
                 LogToDebugConsole("C-STORE operation completed successfully!");
@@ -117,9 +121,9 @@ namespace Com.SaravananSubramanian.DicomCStoreTutorial
         /// <summary>
         /// Creates a DICOM client configured for C-STORE operation.
         /// </summary>
-        private static DicomClient CreateDicomStoreClient(string fileToTransmit)
+        private static async Task<IDicomClient> CreateDicomStoreClient(string fileToTransmit)
         {
-            var client = new DicomClient();
+            var client = DicomClientFactory.Create(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
 
             // Create C-STORE request with the file to send
             // fo-dicom automatically determines the SOP Class from the file
@@ -127,7 +131,7 @@ namespace Com.SaravananSubramanian.DicomCStoreTutorial
 
             // Attach event handler for store response
             cStoreRequest.OnResponseReceived += OnStoreResponseReceived;
-            client.AddRequest(cStoreRequest);
+            await client.AddRequestAsync(cStoreRequest);
 
             // Add association event handlers for status monitoring
             client.AssociationAccepted += OnAssociationAccepted;

@@ -37,8 +37,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using Dicom;
-using Dicom.Imaging;
+using FellowOakDicom;
+using FellowOakDicom.Imaging;
 
 namespace Com.SaravananSubramanian.ExtractingImageData
 {

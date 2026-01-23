@@ -37,7 +37,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Dicom.Media;
+using FellowOakDicom.Media;
 
 namespace Com.SaravananSubramanian.UnderstandingDicomDirectoryPart2
 {

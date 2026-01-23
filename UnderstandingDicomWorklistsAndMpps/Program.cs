@@ -51,8 +51,11 @@
 
 using System;
 using System.Diagnostics;
-using Dicom;
-using Dicom.Network;
+using FellowOakDicom;
+using System.Threading;
+using System.Threading.Tasks;
+using FellowOakDicom.Network;
+using FellowOakDicom.Network.Client;
 
 namespace Com.SaravananSubramanian.UnderstandingDicomWorklistsAndMpps
 {
@@ -68,7 +71,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWorklistsAndMpps
         private static readonly string LocalAeTitle = "FODICOM_MWL";
         private static readonly bool UseTls = false;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -84,13 +87,13 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWorklistsAndMpps
                 LogToDebugConsole("");
 
                 // Create MWL client
-                var client = CreateMwlClient();
+                var client = await CreateMwlClient();
 
                 LogToDebugConsole("Sending Modality Worklist query...");
                 LogToDebugConsole("");
 
                 // Execute the query
-                client.Send(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
+                await client.SendAsync(CancellationToken.None);
 
                 LogToDebugConsole("");
                 LogToDebugConsole("Modality Worklist query completed.");
@@ -105,9 +108,9 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWorklistsAndMpps
         /// <summary>
         /// Creates a DICOM client configured for Modality Worklist query.
         /// </summary>
-        private static DicomClient CreateMwlClient()
+        private static async Task<IDicomClient> CreateMwlClient()
         {
-            var client = new DicomClient();
+            var client = DicomClientFactory.Create(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
 
             //-----------------------------------------------------------------------
             // Create MWL C-FIND request
@@ -153,7 +156,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWorklistsAndMpps
             // Attach response handler
             request.OnResponseReceived += OnMwlResponseReceived;
 
-            client.AddRequest(request);
+            await client.AddRequestAsync(request);
 
             // Add association event handlers
             client.AssociationAccepted += (s, e) => LogToDebugConsole($"Association accepted by: {e.Association.RemoteHost}");

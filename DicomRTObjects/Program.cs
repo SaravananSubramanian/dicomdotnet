@@ -26,7 +26,7 @@
 
 using System;
 using System.Diagnostics;
-using Dicom;
+using FellowOakDicom;
 
 namespace Com.SaravananSubramanian.DicomRTObjects
 {

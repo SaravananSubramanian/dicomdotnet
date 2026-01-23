@@ -56,7 +56,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWeb
         //-----------------------------------------------------------------------
         private static readonly string DicomWebBaseUrl = "http://localhost:8042/dicom-web";
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWeb
                 LogToDebugConsole("");
 
                 // Run async demo
-                RunDicomWebDemoAsync().GetAwaiter().GetResult();
+                await RunDicomWebDemoAsync();
 
                 LogToDebugConsole("");
                 LogToDebugConsole("DICOMweb tutorial completed.");

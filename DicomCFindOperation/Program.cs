@@ -45,8 +45,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Dicom;
-using Dicom.Network;
+using FellowOakDicom;
+using System.Threading;
+using System.Threading.Tasks;
+using FellowOakDicom.Network;
+using FellowOakDicom.Network.Client;
+using FellowOakDicom.Network.Client.EventArguments;
 
 namespace Com.SaravananSubramanian.DicomCFindOperation
 {
@@ -73,7 +77,7 @@ namespace Com.SaravananSubramanian.DicomCFindOperation
         // Store found study UIDs for potential C-GET/C-MOVE operations
         private static readonly List<string> FoundStudyUids = new List<string>();
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -92,10 +96,10 @@ namespace Com.SaravananSubramanian.DicomCFindOperation
                 LogToDebugConsole("");
 
                 // Create C-FIND SCU client
-                var client = CreateCFindClient(searchPattern);
+                var client = await CreateCFindClient(searchPattern);
 
                 // Execute the query
-                client.Send(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
+                await client.SendAsync(CancellationToken.None);
 
                 LogToDebugConsole("");
                 LogToDebugConsole($"Query completed. Found {FoundStudyUids.Count} studies.");
@@ -112,9 +116,9 @@ namespace Com.SaravananSubramanian.DicomCFindOperation
         /// <summary>
         /// Creates a DICOM client configured for C-FIND query operation.
         /// </summary>
-        private static DicomClient CreateCFindClient(string patientNameFilter)
+        private static async Task<IDicomClient> CreateCFindClient(string patientNameFilter)
         {
-            var client = new DicomClient();
+            var client = DicomClientFactory.Create(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
 
             // Enable asynchronous operations for better performance
             client.NegotiateAsyncOps();
@@ -160,7 +164,7 @@ namespace Com.SaravananSubramanian.DicomCFindOperation
             request.OnResponseReceived += OnCFindResponseReceived;
 
             // Add request to client
-            client.AddRequest(request);
+            await client.AddRequestAsync(request);
 
             // Add association event handlers
             client.AssociationAccepted += OnAssociationAccepted;

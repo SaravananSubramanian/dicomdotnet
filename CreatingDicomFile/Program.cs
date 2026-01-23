@@ -28,8 +28,8 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Dicom;
-using Dicom.Imaging;
+using FellowOakDicom;
+using FellowOakDicom.Imaging;
 
 namespace Com.SaravananSubramanian.CreatingDicomFile
 {

@@ -27,7 +27,7 @@
 
 using System;
 using System.Diagnostics;
-using Dicom;
+using FellowOakDicom;
 
 namespace Com.SaravananSubramanian.DicomWaveforms
 {
@@ -371,7 +371,7 @@ namespace Com.SaravananSubramanian.DicomWaveforms
             // Convert to byte array
             byte[] waveformBytes = new byte[waveformData.Length * 2];
             Buffer.BlockCopy(waveformData, 0, waveformBytes, 0, waveformBytes.Length);
-            waveformItem.Add(new DicomOtherWord(DicomTag.WaveformData, waveformBytes));
+            waveformItem.Add(DicomTag.WaveformData, waveformBytes);
 
             waveformSequence.Items.Add(waveformItem);
             dataset.Add(waveformSequence);

@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
 // Tutorial: DICOM Network Verification (C-ECHO)
 //-----------------------------------------------------------------------
 // Purpose:
@@ -29,15 +29,20 @@
 //
 // SOP Class: Verification SOP Class (1.2.840.10008.1.1)
 //
-// fo-dicom References:
-//   - DicomClient - DICOM network client
+// fo-dicom References (5.x async API):
+//   - DicomClientFactory.Create() - Creates async DICOM client
 //   - DicomCEchoRequest - C-ECHO request message
 //   - DicomCEchoResponse - C-ECHO response with status
+//   - await client.AddRequestAsync() - Async request queueing
+//   - await client.SendAsync() - Async network operation
 //-----------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
-using Dicom.Network;
+using System.Threading;
+using System.Threading.Tasks;
+using FellowOakDicom.Network;
+using FellowOakDicom.Network.Client;
 
 namespace Com.SaravananSubramanian.UnderstandingDicomVerification
 {
@@ -63,7 +68,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomVerification
         // Use TLS encryption (false for most test servers)
         private static readonly bool UseTls = false;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -77,15 +82,29 @@ namespace Com.SaravananSubramanian.UnderstandingDicomVerification
                 LogToDebugConsole($"  Use TLS:        {UseTls}");
                 LogToDebugConsole("");
 
-                // Create the DICOM verification client with event handlers
-                var client = CreateDicomVerificationClient();
+                // Create the DICOM client using factory pattern (fo-dicom 5.x)
+                // Connection parameters are specified at creation time
+                var client = DicomClientFactory.Create(
+                    DicomServerHost,
+                    DicomServerPort,
+                    UseTls,
+                    LocalAeTitle,
+                    RemoteAeTitle);
+
+                // Create C-ECHO request - uses Verification SOP Class (1.2.840.10008.1.1)
+                var cEchoRequest = new DicomCEchoRequest();
+
+                // Attach event handler for when the remote peer responds
+                cEchoRequest.OnResponseReceived += OnEchoResponseReceived;
+
+                // Add the request to the client asynchronously
+                await client.AddRequestAsync(cEchoRequest);
 
                 LogToDebugConsole("Sending C-ECHO request...");
                 LogToDebugConsole("");
 
-                // Send the verification request to the remote DICOM server
-                // This is a blocking call - it waits for the response
-                client.Send(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
+                // Send the verification request asynchronously
+                await client.SendAsync(CancellationToken.None);
 
                 LogToDebugConsole("");
                 LogToDebugConsole("C-ECHO verification completed successfully!");
@@ -95,25 +114,6 @@ namespace Com.SaravananSubramanian.UnderstandingDicomVerification
                 LogToDebugConsole($"Error during C-ECHO verification: {e.Message}");
                 LogToDebugConsole($"Stack trace: {e.StackTrace}");
             }
-        }
-
-        /// <summary>
-        /// Creates a DICOM client configured for C-ECHO verification.
-        /// </summary>
-        private static DicomClient CreateDicomVerificationClient()
-        {
-            var client = new DicomClient();
-
-            // Create C-ECHO request - uses Verification SOP Class (1.2.840.10008.1.1)
-            var cEchoRequest = new DicomCEchoRequest();
-
-            // Attach event handler for when the remote peer responds
-            cEchoRequest.OnResponseReceived += OnEchoResponseReceived;
-
-            // Add the request to the client
-            client.AddRequest(cEchoRequest);
-
-            return client;
         }
 
         /// <summary>

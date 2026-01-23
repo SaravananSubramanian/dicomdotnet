@@ -1,6 +1,6 @@
 ﻿using System;
-using Dicom;
-using Dicom.Media;
+using FellowOakDicom;
+using FellowOakDicom.Media;
 
 namespace Com.SaravananSubramanian.UnderstandingDicomDirectoryPart2
 {

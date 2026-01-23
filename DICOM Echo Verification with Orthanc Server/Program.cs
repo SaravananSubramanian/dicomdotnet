@@ -1,4 +1,8 @@
-﻿using Dicom.Network;
+using System.Threading;
+using System.Threading.Tasks;
+using FellowOakDicom.Network;
+using FellowOakDicom.Network.Client;
+using FellowOakDicom.Network.Client.EventArguments;
 using System;
 using System.Diagnostics;
 
@@ -6,21 +10,22 @@ namespace Com.SaravananSubramanian.DICOMEchoVerificationWithOrthancServer
 {
     class Program
     {
-        static void Main(string[] args)
+        // Configuration constants
+        private static readonly string DicomRemoteHost = "localhost";
+        private static readonly int DicomRemoteHostPort = 4242;
+        private static readonly bool UseTls = false;
+        private static readonly string OurDotNetTestClientDicomAeTitle = "OurDotNetTestClient";
+        private static readonly string RemoteDicomHostAeTitle = "ORTHANC";
+
+        static async Task Main(string[] args)
         {
             try
             {
-                var dicomRemoteHost = "localhost";
-                var dicomRemoteHostPort = 4242;
-                var useTls = false;
-                var ourDotNetTestClientDicomAeTitle = "OurDotNetTestClient";
-                var remoteDicomHostAeTitle = "ORTHANC";
-
                 //create DICOM echo verification client with handlers
-                var client = CreateDicomVerificationClient();
+                var client = await CreateDicomVerificationClient();
 
                 //send the verification request to the remote DICOM server
-                client.Send(dicomRemoteHost, dicomRemoteHostPort, useTls, ourDotNetTestClientDicomAeTitle, remoteDicomHostAeTitle);
+                await client.SendAsync(CancellationToken.None);
                 LogToDebugConsole("Our DICOM ping operation was successfully completed");
             }
             catch (Exception e)
@@ -29,16 +34,16 @@ namespace Com.SaravananSubramanian.DICOMEchoVerificationWithOrthancServer
             }
         }
 
-        private static DicomClient CreateDicomVerificationClient()
+        private static async Task<IDicomClient> CreateDicomVerificationClient()
         {
-            var client = new DicomClient();
+            var client = DicomClientFactory.Create(DicomRemoteHost, DicomRemoteHostPort, UseTls, OurDotNetTestClientDicomAeTitle, RemoteDicomHostAeTitle);
 
             //register that we want to do a DICOM ping here
             var dicomCEchoRequest = new DicomCEchoRequest();
 
-            //attach an event handler when remote peer responds to echo request 
+            //attach an event handler when remote peer responds to echo request
             dicomCEchoRequest.OnResponseReceived += OnEchoResponseReceivedFromRemoteHost;
-            client.AddRequest(dicomCEchoRequest);
+            await client.AddRequestAsync(dicomCEchoRequest);
 
             //Add a handler to be notified of any association rejections
             client.AssociationRejected += OnAssociationRejected;
@@ -66,17 +71,17 @@ namespace Com.SaravananSubramanian.DICOMEchoVerificationWithOrthancServer
 
         private static void OnAssociationRejected(object sender, AssociationRejectedEventArgs e)
         {
-            LogToDebugConsole($"Association was rejected. Rejected Reason:{e.Reason}");
+            LogToDebugConsole($"Association was rejected. Reason:{e.Reason}");
         }
 
         private static void OnAssociationReleased(object sender, EventArgs e)
         {
-            LogToDebugConsole("Association was released. BYE BYE!");
+            LogToDebugConsole("Association was released.");
         }
 
-        private static void LogToDebugConsole(string informationToLog)
+        private static void LogToDebugConsole(string message)
         {
-            Debug.WriteLine(informationToLog);
+            Debug.WriteLine(message);
         }
     }
 }

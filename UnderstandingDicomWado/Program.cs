@@ -70,7 +70,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWado
         private static readonly string OutputPath =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Output");
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWado
                 }
 
                 // Run async demo
-                RunWadoDemoAsync().GetAwaiter().GetResult();
+                await RunWadoDemoAsync();
 
                 LogToDebugConsole("");
                 LogToDebugConsole("WADO tutorial completed.");
@@ -202,7 +202,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomWado
                 LogToDebugConsole("");
                 LogToDebugConsole(@"
 using System.Net.Http;
-using Dicom;
+using FellowOakDicom;
 
 // Build WADO URL
 var wadoUrl = $""{WadoBaseUrl}?requestType=WADO"" +

@@ -25,7 +25,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Dicom;
+using FellowOakDicom;
 
 namespace Com.SaravananSubramanian.MakingSenseOfDicomFile
 {

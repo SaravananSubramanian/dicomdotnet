@@ -35,7 +35,11 @@
 
 using System;
 using System.Diagnostics;
-using Dicom.Network;
+using System.Threading;
+using System.Threading.Tasks;
+using FellowOakDicom.Network;
+using FellowOakDicom.Network.Client;
+using FellowOakDicom.Network.Client.EventArguments;
 
 namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiations
 {
@@ -58,7 +62,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiations
         private static readonly string LocalAeTitle = "FODICOM_SCU";
         private static readonly bool UseTls = false;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -71,13 +75,13 @@ namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiations
                 LogToDebugConsole("");
 
                 // Create DICOM client with association event handlers
-                var client = CreateDicomClientWithAssociationHandlers();
+                var client = await CreateDicomClientWithAssociationHandlers();
 
                 LogToDebugConsole("Initiating association...");
                 LogToDebugConsole("");
 
                 // Send request - this triggers association negotiation
-                client.Send(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
+                await client.SendAsync(CancellationToken.None);
 
                 LogToDebugConsole("");
                 LogToDebugConsole("Association demonstration completed.");
@@ -92,14 +96,14 @@ namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiations
         /// <summary>
         /// Creates a DICOM client with handlers for all association events.
         /// </summary>
-        private static DicomClient CreateDicomClientWithAssociationHandlers()
+        private static async Task<IDicomClient> CreateDicomClientWithAssociationHandlers()
         {
-            var client = new DicomClient();
+            var client = DicomClientFactory.Create(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
 
             // Create C-ECHO request to trigger association
             var cEchoRequest = new DicomCEchoRequest();
             cEchoRequest.OnResponseReceived += OnEchoResponseReceived;
-            client.AddRequest(cEchoRequest);
+            await client.AddRequestAsync(cEchoRequest);
 
             // Add event handlers for association lifecycle events
             client.AssociationAccepted += OnAssociationAccepted;

@@ -45,7 +45,8 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Dicom.Network;
+using FellowOakDicom.Network;
+using FellowOakDicom.Network.Client;
 
 namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
 {
@@ -64,7 +65,7 @@ namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
         private static readonly int MaxRetryAttempts = 3;
         private static readonly int InitialRetryDelayMs = 1000;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -81,7 +82,7 @@ namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
                 LogToDebugConsole("");
 
                 // Demonstrate retry logic with C-ECHO
-                DemonstrateRetryLogic();
+                await DemonstrateRetryLogicAsync();
 
                 LogToDebugConsole("");
                 LogToDebugConsole("Transient error handling tutorial completed.");
@@ -96,7 +97,7 @@ namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
         /// <summary>
         /// Demonstrates retry logic with exponential backoff.
         /// </summary>
-        private static void DemonstrateRetryLogic()
+        private static async Task DemonstrateRetryLogicAsync()
         {
             LogToDebugConsole("--- Demonstrating Retry Logic ---");
             LogToDebugConsole("");
@@ -113,7 +114,7 @@ namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
                 try
                 {
                     // Create DICOM client with timeout configuration
-                    var client = new DicomClient();
+                    var client = DicomClientFactory.Create(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
 
                     // Configure timeouts
                     // These help detect issues faster than default timeouts
@@ -130,7 +131,7 @@ namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
                         responseReceived = true;
                     };
 
-                    client.AddRequest(echoRequest);
+                    await client.AddRequestAsync(echoRequest);
 
                     // Track association events
                     client.AssociationRejected += (s, e) =>
@@ -139,7 +140,7 @@ namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
                     };
 
                     // Send with error handling
-                    client.Send(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
+                    await client.SendAsync(CancellationToken.None);
 
                     if (responseReceived)
                     {
@@ -180,7 +181,7 @@ namespace Com.SaravananSubramanian.HandlingTransientErrorsDuringCommunication
                     delayMs += random.Next(0, delayMs / 4);
 
                     LogToDebugConsole($"  Waiting {delayMs}ms before retry...");
-                    Thread.Sleep(delayMs);
+                    await Task.Delay(delayMs);
                     LogToDebugConsole("");
                 }
             }

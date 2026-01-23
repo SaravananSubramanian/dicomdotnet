@@ -24,7 +24,7 @@
 
 using System;
 using System.Diagnostics;
-using Dicom;
+using FellowOakDicom;
 
 namespace Com.SaravananSubramanian.DicomSecureCommunications
 {
@@ -178,7 +178,7 @@ namespace Com.SaravananSubramanian.DicomSecureCommunications
             LogToDebugConsole("  var cert = new X509Certificate2(\"client.pfx\", password);");
             LogToDebugConsole("");
             LogToDebugConsole("  // Create client with TLS");
-            LogToDebugConsole("  var client = new DicomClient(host, port, useTls: true,");
+            LogToDebugConsole("  var client = DicomClientFactory.Create(host, port, useTls: true,");
             LogToDebugConsole("      callingAe, calledAe);");
             LogToDebugConsole("");
             LogToDebugConsole("  // Configure TLS options");

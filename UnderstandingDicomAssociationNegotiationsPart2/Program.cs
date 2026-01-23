@@ -36,8 +36,12 @@
 
 using System;
 using System.Diagnostics;
-using Dicom;
-using Dicom.Network;
+using FellowOakDicom;
+using System.Threading;
+using System.Threading.Tasks;
+using FellowOakDicom.Network;
+using FellowOakDicom.Network.Client;
+using FellowOakDicom.Network.Client.EventArguments;
 
 namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiationsPart2
 {
@@ -60,7 +64,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiationsPart
         private static readonly string LocalAeTitle = "FODICOM_SCU";
         private static readonly bool UseTls = false;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             try
             {
@@ -76,7 +80,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiationsPart
                 LogToDebugConsole("");
 
                 // Create DICOM client
-                var client = new DicomClient();
+                var client = DicomClientFactory.Create(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
 
                 //-----------------------------------------------------------------------
                 // Create an invalid/unsupported Abstract Syntax (SOP Class UID)
@@ -105,7 +109,7 @@ namespace Com.SaravananSubramanian.UnderstandingDicomAssociationNegotiationsPart
                 LogToDebugConsole("");
 
                 // Send the request - this should trigger a rejection
-                client.Send(DicomServerHost, DicomServerPort, UseTls, LocalAeTitle, RemoteAeTitle);
+                await client.SendAsync(CancellationToken.None);
 
                 LogToDebugConsole("");
                 LogToDebugConsole("Rejection handling demonstration completed.");

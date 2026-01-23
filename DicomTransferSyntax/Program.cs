@@ -30,8 +30,8 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using Dicom;
-using Dicom.Imaging.Codec;
+using FellowOakDicom;
+using FellowOakDicom.Imaging.Codec;
 
 namespace Com.SaravananSubramanian.DicomTransferSyntax
 {
@@ -126,19 +126,19 @@ namespace Com.SaravananSubramanian.DicomTransferSyntax
             LogToDebugConsole("");
 
             LogToDebugConsole("  Implicit VR Little Endian (Default):");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.ImplicitVRLittleEndian.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.ImplicitVRLittleEndian.UID.UID}");
             LogToDebugConsole("    The default DICOM transfer syntax");
             LogToDebugConsole("    VR must be looked up in data dictionary");
             LogToDebugConsole("");
 
             LogToDebugConsole("  Explicit VR Little Endian:");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.ExplicitVRLittleEndian.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.ExplicitVRLittleEndian.UID.UID}");
             LogToDebugConsole("    Widely supported, VR included");
             LogToDebugConsole("    Recommended for network transfer");
             LogToDebugConsole("");
 
             LogToDebugConsole("  Explicit VR Big Endian (Retired):");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.ExplicitVRBigEndian.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.ExplicitVRBigEndian.UID.UID}");
             LogToDebugConsole("    Retired in DICOM 2016b");
             LogToDebugConsole("    Avoid for new implementations");
             LogToDebugConsole("");
@@ -147,36 +147,36 @@ namespace Com.SaravananSubramanian.DicomTransferSyntax
             LogToDebugConsole("");
 
             LogToDebugConsole("  JPEG Baseline (Lossy):");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.JPEGProcess1.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.JPEGProcess1.UID.UID}");
             LogToDebugConsole("    8-bit lossy compression");
             LogToDebugConsole("    Good compression ratio");
             LogToDebugConsole("");
 
             LogToDebugConsole("  JPEG Lossless:");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.JPEGProcess14SV1.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.JPEGProcess14SV1.UID.UID}");
             LogToDebugConsole("    Selection Value 1 (Predictor 1)");
             LogToDebugConsole("    Most commonly used lossless");
             LogToDebugConsole("");
 
             LogToDebugConsole("  JPEG 2000 Lossless:");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.JPEG2000Lossless.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.JPEG2000Lossless.UID.UID}");
             LogToDebugConsole("    Better compression than JPEG Lossless");
             LogToDebugConsole("    Computationally more expensive");
             LogToDebugConsole("");
 
             LogToDebugConsole("  JPEG 2000 Lossy:");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.JPEG2000Lossy.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.JPEG2000Lossy.UID.UID}");
             LogToDebugConsole("    Configurable quality levels");
             LogToDebugConsole("    Part of JPEG 2000 family");
             LogToDebugConsole("");
 
             LogToDebugConsole("  JPEG-LS Lossless:");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.JPEGLSLossless.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.JPEGLSLossless.UID.UID}");
             LogToDebugConsole("    Excellent lossless compression");
             LogToDebugConsole("");
 
             LogToDebugConsole("  RLE Lossless:");
-            LogToDebugConsole($"    UID: {DicomTransferSyntax.RLELossless.UID.UID}");
+            LogToDebugConsole($"    UID: {FellowOakDicom.DicomTransferSyntax.RLELossless.UID.UID}");
             LogToDebugConsole("    Run-Length Encoding");
             LogToDebugConsole("    Simple, widely supported");
         }
@@ -228,7 +228,7 @@ namespace Com.SaravananSubramanian.DicomTransferSyntax
             LogToDebugConsole("");
 
             // Show properties of a transfer syntax
-            var ts = DicomTransferSyntax.JPEGProcess14SV1;
+            var ts = FellowOakDicom.DicomTransferSyntax.JPEGProcess14SV1;
             LogToDebugConsole($"  Example: {ts.UID.Name}");
             LogToDebugConsole($"    UID: {ts.UID.UID}");
             LogToDebugConsole($"    IsExplicitVR: {ts.IsExplicitVR}");
@@ -238,8 +238,8 @@ namespace Com.SaravananSubramanian.DicomTransferSyntax
             LogToDebugConsole("");
 
             LogToDebugConsole("Looking up Transfer Syntax:");
-            LogToDebugConsole("  var ts = DicomTransferSyntax.Parse(\"1.2.840.10008.1.2\");");
-            LogToDebugConsole("  var ts = DicomTransferSyntax.ImplicitVRLittleEndian;");
+            LogToDebugConsole("  var ts = FellowOakDicom.DicomTransferSyntax.Parse(\"1.2.840.10008.1.2\");");
+            LogToDebugConsole("  var ts = FellowOakDicom.DicomTransferSyntax.ImplicitVRLittleEndian;");
             LogToDebugConsole("");
 
             LogToDebugConsole("Reading File's Transfer Syntax:");
@@ -250,7 +250,7 @@ namespace Com.SaravananSubramanian.DicomTransferSyntax
             LogToDebugConsole("Creating File with Specific Transfer Syntax:");
             LogToDebugConsole("  var file = new DicomFile(dataset);");
             LogToDebugConsole("  file.FileMetaInfo.TransferSyntax = ");
-            LogToDebugConsole("      DicomTransferSyntax.ExplicitVRLittleEndian;");
+            LogToDebugConsole("      FellowOakDicom.DicomTransferSyntax.ExplicitVRLittleEndian;");
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Com.SaravananSubramanian.DicomTransferSyntax
             LogToDebugConsole("fo-dicom Transcoding:");
             LogToDebugConsole("");
             LogToDebugConsole("  // Using DicomFile extension method");
-            LogToDebugConsole("  var compressed = file.Clone(DicomTransferSyntax.JPEGProcess14SV1);");
+            LogToDebugConsole("  var compressed = file.Clone(FellowOakDicom.DicomTransferSyntax.JPEGProcess14SV1);");
             LogToDebugConsole("");
             LogToDebugConsole("  // Using transcoder directly");
             LogToDebugConsole("  var transcoder = new DicomTranscoder(");
