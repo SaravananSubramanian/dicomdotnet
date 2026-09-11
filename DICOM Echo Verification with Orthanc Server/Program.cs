@@ -30,7 +30,7 @@ namespace Com.SaravananSubramanian.DICOMEchoVerificationWithOrthancServer
             }
             catch (Exception e)
             {
-                LogToDebugConsole($"Error occured during DICOM verification request -> {e.StackTrace}");
+                LogToDebugConsole($"Error occurred during DICOM verification request -> {e.StackTrace}");
             }
         }
 
